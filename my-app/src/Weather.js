@@ -1,16 +1,41 @@
 import React from "react";
-import axios from "axios";
-import { Puff } from "react-loader-spinner";
+import "./App.css";
 
-export default function Weather(props) {
-  function showTemp(response) {
-    alert(
-      `The weather in ${response.data.name} is ${response.data.main.temp} degrees.`
-    );
-  }
-  let apiKey = "bc2cd97eaa209e7d22d8f3c84081655f";
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${apiKey}&units=metric`;
-
-  axios.get(url).then(showTemp);
-  return <Puff color="#00BFFF" height={100} width={100} timeout={3000} />;
+export default function Weather() {
+  let weatherData = {
+    city: "Woodbridge",
+    temperature: 23,
+    date: "Wednesday 12:00",
+    description: "Cloudy",
+    imgUrl: "https://ssl.gstatic.com/onebox/weather/64/cloudy.png",
+    humidity: 50,
+    wind: 2,
+  };
+  return (
+    <div className="Weather">
+      <h1>{weatherData.city}</h1>
+      <img
+        src={weatherData.imgUrl}
+        alt={weatherData.description}
+        className="float-left"
+        id="iconCloudy"
+      />
+      <h3>
+        Today
+        <p className="update">
+          Last updated: <span id="date"> {weatherData.date}</span>
+        </p>
+        <br />
+        <span id="tempe">{weatherData.temperature}</span>
+        <span className="links">°F</span>
+      </h3>
+      <ul>
+        <li id="describe">{weatherData.description}</li>
+        <br />
+        <li id="humidity">Humidity: {weatherData.humidity}%</li>
+        <br />
+        <li id="wind">Wind: {weatherData.wind}MPH</li>
+      </ul>
+    </div>
+  );
 }
