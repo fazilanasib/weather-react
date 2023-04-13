@@ -36,6 +36,59 @@ export default function Weather() {
         <br />
         <li id="wind">Wind: {weatherData.wind}MPH</li>
       </ul>
+
+      <div className="Forecast">
+        <div>
+          <p>Friday</p>
+          <img
+            src={weatherData.imgUrl}
+            alt={weatherData.description}
+            className="float-left"
+            id="icontwo"
+          />
+          <p className="temp">20°</p>
+        </div>
+        <div>
+          <p>Saturday</p>
+          <img
+            src={weatherData.imgUrl}
+            alt={weatherData.description}
+            className="float-left"
+            id="icontwo"
+          />
+          <p className="temp">20°</p>
+        </div>
+        <div>
+          <p>Sunday</p>
+          <img
+            src={weatherData.imgUrl}
+            alt={weatherData.description}
+            className="float-left"
+            id="icontwo"
+          />
+          <p className="temp">20°</p>
+        </div>
+        <div>
+          <p>Monday</p>
+          <img
+            src={weatherData.imgUrl}
+            alt={weatherData.description}
+            className="float-left"
+            id="icontwo"
+          />
+          <p className="temp">20°</p>
+        </div>
+        <div>
+          <p>Tuesday</p>
+          <img
+            src={weatherData.imgUrl}
+            alt={weatherData.description}
+            className="float-left"
+            id="icontwo"
+          />
+          <p className="temp">20°</p>
+        </div>
+      </div>
     </div>
   );
 }

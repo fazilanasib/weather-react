@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Weather from "./Weather";
 import Buttons from "./Buttons";
@@ -9,9 +8,18 @@ import Buttons from "./Buttons";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
-    <Weather city="Paris" />
+    <Weather />
+
     <Buttons />
+    <small>
+      <a
+        href="https://github.com/fazilanasib/weather-react"
+        target="_blank"
+        rel="noreferrer">
+        Open-source code,
+      </a>
+      by Fazila Nasib
+    </small>
   </React.StrictMode>
 );
 
