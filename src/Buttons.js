@@ -12,7 +12,6 @@ export default function Buttons() {
               placeholder="Type a city 🏙️..."
               className="form-control"
               id="enterhere-input"
-              autocomplte="off"
             />
           </div>
           <div className="col-2">
