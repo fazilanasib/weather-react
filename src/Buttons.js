@@ -9,7 +9,7 @@ export default function Buttons() {
           <div className="col-7">
             <input
               type="search"
-              placeholder="Type a city 🏙️..."
+              placeholder="Type a city of your choice 🏙️..."
               className="form-control"
               id="enterhere-input"
             />
