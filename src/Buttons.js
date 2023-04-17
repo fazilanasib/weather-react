@@ -23,7 +23,7 @@ export default function Buttons() {
             />
           </div>
           <div className="col">
-            <button>Current!</button>
+            <button>Current</button>
           </div>
         </div>
       </form>
