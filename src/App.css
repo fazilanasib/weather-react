@@ -14,8 +14,8 @@
   display: flex;
   grid-gap: 20px;
   position: relative;
-  top: -250px;
-  right: -90px;
+  top: -260px;
+  right: 15px;
 }
 
 h1 {
@@ -37,15 +37,15 @@ h1 {
   font-size: 40px;
   position: relative;
   bottom: -10px;
-  left: 10px;
+  left: -40px;
   margin: 20px;
   width: 130px;
   height: 150px;
 }
 h3 {
   position: relative;
-  top: -175px;
-  left: 200px;
+  top: -155px;
+  left: 120px;
   font-size: 20px;
   font-weight: bold;
   margin: 0 auto;
@@ -85,8 +85,8 @@ h3 .links .active {
 
 ul {
   position: relative;
-  top: -330px;
-  right: -500px;
+  top: -300px;
+  right: -400px;
   list-style: none;
   font-size: 16px;
   font-weight: bold;
