@@ -3,24 +3,12 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import Weather from "./Weather";
-import Buttons from "./Buttons";
 import "bootstrap/dist/css/bootstrap.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Weather />
-
-    <Buttons />
-    <small>
-      <a
-        href="https://github.com/fazilanasib/weather-react"
-        target="_blank"
-        rel="noreferrer">
-        Open-source code ,
-      </a>
-      by Fazila Nasib
-    </small>
   </React.StrictMode>
 );
 

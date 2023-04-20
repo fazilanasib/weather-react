@@ -27,6 +27,15 @@ export default function Buttons() {
           </div>
         </div>
       </form>
+      <small>
+        <a
+          href="https://github.com/fazilanasib/weather-react"
+          target="_blank"
+          rel="noreferrer">
+          Open-source code ,
+        </a>
+        by Fazila Nasib
+      </small>
     </div>
   );
 }
