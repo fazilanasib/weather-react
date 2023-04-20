@@ -4,15 +4,21 @@ import Buttons from "./Buttons";
 import axios from "axios";
 
 export default function Weather() {
-  const [ready, setReady] = useState(false);
-  const [temperature, setTemperature] = useState(null);
+  const [weatherData, setWeatherData] = useState({ready: false});
   function handleResponse(response) {
-    console.log(response.data);
-    setTemperature(response.data.main.temp);
-    setReady(true);
+    setWeatherData({
+      ready: true,
+      temperature: response.data.main.temp,
+      description: response.data.weather[0].description,
+      city: response.data.name,
+      date: Thursday 08:00,
+      wind: response.data.wind.speed,
+      humidity: response.data.main.humidity,
+      imgUrl: "https://ssl.gstatic.com/onebox/weather/64/cloudy.png",
+    }); 
   }
 
-  if (ready) {
+  if (weatherData.ready) {
     return (
       <div className="Weather">
         <div className="container">
@@ -29,11 +35,11 @@ export default function Weather() {
               Last updated: <span id="date"> {weatherData.date}</span>
             </p>
             <br />
-            <span id="tempe">{Math.round(temperature)}</span>
+            <span id="tempe">{Math.round(weatherData.temperature)}</span>
             <span className="links">°C</span>
           </h3>
           <ul>
-            <li id="describe">{weatherData.description}</li>
+            <li className="text-capitalize" id="describe">{weatherData.description}</li>
             <br />
             <li id="humidity">Humidity: {weatherData.humidity}%</li>
             <br />
@@ -105,14 +111,7 @@ export default function Weather() {
     return "Loading...";
   }
 
-  let weatherData = {
-    city: "Woodbridge",
-    temperature: 23,
-    date: "Wednesday 12:00",
-    description: "Cloudy",
-    imgUrl: "https://ssl.gstatic.com/onebox/weather/64/cloudy.png",
-    humidity: 50,
-    wind: 2,
+  
   };
   return (
     <div className="Weather">
