@@ -3,7 +3,7 @@ import "./App.css";
 import Buttons from "./Buttons";
 import axios from "axios";
 
-export default function Weather() {
+export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ready: false});
   function handleResponse(response) {
     setWeatherData({
@@ -104,8 +104,7 @@ export default function Weather() {
     );
   } else {
     let apiKey = "15b6ba0523386a8a73b38b2440a74dea";
-    let city = "Woodbridge";
-    let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
 
     return "Loading...";
