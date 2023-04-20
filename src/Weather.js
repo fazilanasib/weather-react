@@ -1,199 +1,84 @@
 import React, { useState } from "react";
 import "./App.css";
-import Buttons from "./Buttons";
-import FormattedDate from "./FormattedDate";
+import WeatherInfo from "./WeatherInfo";
+import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 
 export default function Weather(props) {
-  const [weatherData, setWeatherData] = useState({ready: false});
+  const [city, setCity] = useState(props.defaultCity);
+  const [weatherData, setWeatherData] = useState({ ready: false });
   function handleResponse(response) {
     setWeatherData({
       ready: true,
       temperature: response.data.main.temp,
       description: response.data.weather[0].description,
       city: response.data.name,
-      date: new Date(response.data.dt*1000),
+      date: new Date(response.data.dt * 1000),
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
       imgUrl: "https://ssl.gstatic.com/onebox/weather/64/cloudy.png",
-    }); 
+    });
+  }
+
+  function search() {
+    let apiKey = "15b6ba0523386a8a73b38b2440a74dea";
+    let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function handleCityChange(event) {
+    setCity(event.target.value);
   }
 
   if (weatherData.ready) {
     return (
       <div className="Weather">
         <div className="container">
-          <h1>{weatherData.city}</h1>
-          <img
-            src={weatherData.imgUrl}
-            alt={weatherData.description}
-            className="float-left"
-            id="iconCloudy"
-          />
-          <h3>
-            Today
-            <p className="update">
-              Last updated: <span id="date"> <FormattedDate date={weatherData.date}/></span>
-            </p>
-            <br />
-            <span id="tempe">{Math.round(weatherData.temperature)}</span>
-            <span className="links">°C</span>
-          </h3>
-          <ul>
-            <li className="text-capitalize" id="describe">{weatherData.description}</li>
-            <br />
-            <li id="humidity">Humidity: {weatherData.humidity}%</li>
-            <br />
-            <li id="wind">Wind: {weatherData.wind}MPH</li>
-          </ul>
+          <WeatherInfo data={weatherData} />
 
-          <div className="Forecast">
-            <div>
-              <p>Friday</p>
-              <img
-                src={weatherData.imgUrl}
-                alt={weatherData.description}
-                className="float-left"
-                id="icontwo"
-              />
-              <p className="temp">20°</p>
+          <form className="mt-5" id="form" onSubmit={handleSubmit}>
+            <div className="row">
+              <div className="col-7">
+                <input
+                  type="search"
+                  placeholder="Type a city of your choice 🏙️..."
+                  className="form-control"
+                  id="enterhere-input"
+                  onChange={handleCityChange}
+                />
+              </div>
+              <div className="col-2">
+                <input
+                  type="submit"
+                  value="Search"
+                  className="form-control"
+                  id="search-input"
+                />
+              </div>
+              <div className="col">
+                <button>Current</button>
+              </div>
             </div>
-            <div>
-              <p>Saturday</p>
-              <img
-                src={weatherData.imgUrl}
-                alt={weatherData.description}
-                className="float-left"
-                id="icontwo"
-              />
-              <p className="temp">20°</p>
-            </div>
-            <div>
-              <p>Sunday</p>
-              <img
-                src={weatherData.imgUrl}
-                alt={weatherData.description}
-                className="float-left"
-                id="icontwo"
-              />
-              <p className="temp">20°</p>
-            </div>
-            <div>
-              <p>Monday</p>
-              <img
-                src={weatherData.imgUrl}
-                alt={weatherData.description}
-                className="float-left"
-                id="icontwo"
-              />
-              <p className="temp">20°</p>
-            </div>
-            <div>
-              <p>Tuesday</p>
-              <img
-                src={weatherData.imgUrl}
-                alt={weatherData.description}
-                className="float-left"
-                id="icontwo"
-              />
-              <p className="temp">20°</p>
-            </div>
-          </div>
+          </form>
+          <small>
+            <a
+              href="https://github.com/fazilanasib/weather-react"
+              target="_blank"
+              rel="noreferrer">
+              Open-source code ,
+            </a>
+            by Fazila Nasib
+          </small>
         </div>
-        <Buttons />
       </div>
     );
   } else {
-    let apiKey = "15b6ba0523386a8a73b38b2440a74dea";
-    let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-
+    search();
     return "Loading...";
   }
-
-  
-  };
-  return (
-    <div className="Weather">
-      <div className="container">
-        <h1>{weatherData.city}</h1>
-        <img
-          src={weatherData.imgUrl}
-          alt={weatherData.description}
-          className="float-left"
-          id="iconCloudy"
-        />
-        <h3>
-          Today
-          <p className="update">
-            Last updated: <span id="date"> {weatherData.date}</span>
-          </p>
-          <br />
-          <span id="tempe">{weatherData.temperature}</span>
-          <span className="links">°F</span>
-        </h3>
-        <ul>
-          <li id="describe">{weatherData.description}</li>
-          <br />
-          <li id="humidity">Humidity: {weatherData.humidity}%</li>
-          <br />
-          <li id="wind">Wind: {weatherData.wind}MPH</li>
-        </ul>
-
-        <div className="Forecast">
-          <div>
-            <p>Friday</p>
-            <img
-              src={weatherData.imgUrl}
-              alt={weatherData.description}
-              className="float-left"
-              id="icontwo"
-            />
-            <p className="temp">20°</p>
-          </div>
-          <div>
-            <p>Saturday</p>
-            <img
-              src={weatherData.imgUrl}
-              alt={weatherData.description}
-              className="float-left"
-              id="icontwo"
-            />
-            <p className="temp">20°</p>
-          </div>
-          <div>
-            <p>Sunday</p>
-            <img
-              src={weatherData.imgUrl}
-              alt={weatherData.description}
-              className="float-left"
-              id="icontwo"
-            />
-            <p className="temp">20°</p>
-          </div>
-          <div>
-            <p>Monday</p>
-            <img
-              src={weatherData.imgUrl}
-              alt={weatherData.description}
-              className="float-left"
-              id="icontwo"
-            />
-            <p className="temp">20°</p>
-          </div>
-          <div>
-            <p>Tuesday</p>
-            <img
-              src={weatherData.imgUrl}
-              alt={weatherData.description}
-              className="float-left"
-              id="icontwo"
-            />
-            <p className="temp">20°</p>
-          </div>
-        </div>
-      </div>
-      <Buttons />
-    </div>
-  );
 }
