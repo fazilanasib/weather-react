@@ -1,17 +1,15 @@
 import React from "react";
-import "./App.css";
+
+import WeatherIcon from "./WeatherIcon";
 import FormattedDate from "./FormattedDate";
 
 export default function WeatherInfo(props) {
   return (
     <div className="WeatherInfo">
       <h1>{props.data.city}</h1>
-      <img
-        src={props.data.imgUrl}
-        alt={props.data.description}
-        className="float-left"
-        id="iconCloudy"
-      />
+      <div className="float-left">
+        <WeatherIcon code={props.data.icon} />
+      </div>
       <h3>
         Today
         <p className="update">
