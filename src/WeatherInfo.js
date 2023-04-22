@@ -18,7 +18,6 @@ export default function WeatherInfo(props) {
             <FormattedDate date={props.data.date} />
           </span>
         </p>
-        <br />
         <WeatherTemp celsius={props.data.temperature} />
       </h3>
       <ul>
