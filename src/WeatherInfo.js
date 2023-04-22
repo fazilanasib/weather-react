@@ -11,13 +11,13 @@ export default function WeatherInfo(props) {
       <WeatherIcon code={props.data.icon} />
       <h3>
         Today
-        <p className="update">
+        <div className="update">
           Last updated:{" "}
           <span id="date">
             {" "}
             <FormattedDate date={props.data.date} />
           </span>
-        </p>
+        </div>
         <WeatherTemp celsius={props.data.temperature} />
       </h3>
       <ul>
