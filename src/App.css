@@ -152,8 +152,8 @@ h5 {
 }
 #form {
   position: relative;
-  top: -40px;
-  left: -20px;
+  top: -150px;
+  left: 10px;
 }
 
 #search-input {
@@ -185,6 +185,6 @@ button {
 }
 small {
   position: relative;
-  bottom: -10px;
+  bottom: 90px;
   right: 10px;
 }
